@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NED3 Research Software — Core VI</title>
+  <style>
+    :root { --ink:#152238; --muted:#667085; --line:#d9dee7; --paper:#f7f8fa; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Manrope, Arial, sans-serif; line-height:1.5; }
+    header { padding:64px max(24px, calc((100vw - 1180px)/2)); background:var(--ink); color:white; }
+    header p { max-width:720px; color:#cbd5e1; margin:14px 0 0; }
+    h1,h2,h3,p { margin-top:0; } h1 { font-size:clamp(2.1rem,5vw,4rem); letter-spacing:-.05em; margin-bottom:0; }
+    h2 { font-size:clamp(1.8rem,3vw,2.7rem); letter-spacing:-.04em; margin-bottom:10px; }
+    h3 { font-size:1rem; letter-spacing:-.02em; margin-bottom:8px; }
+    nav { position:sticky; top:0; z-index:3; overflow:auto; white-space:nowrap; padding:12px max(24px, calc((100vw - 1180px)/2)); background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(8px); }
+    nav a { color:var(--muted); display:inline-block; font-size:.86rem; font-weight:700; margin-right:21px; text-decoration:none; } nav a:hover { color:var(--ink); }
+    main { max-width:1180px; margin:0 auto; padding:32px 24px 80px; }
+    .intro { padding:28px 0 40px; max-width:780px; color:#475467; }
+    section { scroll-margin-top:64px; margin-bottom:48px; background:var(--white); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+    .brand-head { display:grid; gap:24px; grid-template-columns:1.25fr .75fr; padding:36px; border-bottom:1px solid var(--line); }
+    .brand-head img { width:100%; height:180px; object-fit:contain; }
+    .eyebrow { color:#667085; font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    .pill { display:inline-block; margin:2px 5px 2px 0; padding:4px 9px; color:#344054; background:#f2f4f7; border-radius:100px; font-size:.75rem; font-weight:700; }
+    .content { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:32px 36px 36px; }
+    .content > * { min-width:0; }
+    .image-card { padding:12px; border:1px solid var(--line); border-radius:12px; background:#fbfcfd; }
+    .image-card img { display:block; width:100%; height:auto; object-fit:contain; }
+    .asset-gallery { grid-column:1/-1; display:grid; gap:16px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .asset-card { overflow:hidden; border:1px solid var(--line); border-radius:12px; background:#fbfcfd; }
+    .asset-card img { display:block; width:100%; height:220px; object-fit:contain; background:white; }
+    .asset-card figcaption { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; color:#344054; font-size:.85rem; font-weight:750; }
+    .download { display:inline-block; flex:0 0 auto; padding:7px 10px; border-radius:7px; color:white; background:var(--ink); font-size:.75rem; font-weight:800; text-decoration:none; }
+    .download:hover { background:#304ffe; }
+    .rules { display:grid; gap:12px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .rule { min-height:108px; padding:16px; border:1px solid var(--line); border-radius:12px; }
+    .rule p { margin:0; color:#475467; font-size:.9rem; }
+    .note { grid-column:1/-1; padding:16px; border-left:4px solid #98a2b3; color:#475467; background:#f8fafc; font-size:.9rem; }
+    footer { max-width:1180px; margin:0 auto; padding:0 24px 48px; color:#667085; font-size:.85rem; }
+    @media (max-width:760px) { .brand-head,.content,.asset-gallery { grid-template-columns:1fr; padding:24px; } .asset-gallery { padding:0; } .rules { grid-template-columns:1fr; } header { padding-top:46px; padding-bottom:46px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">NED3 Research Software</div>
+    <h1>Core visual identity systems</h1>
+    <p>Nine distinct, GitHub-first research identities with a shared standard of clarity, traceability, and restrained technical expression. Version 0.3 — raster reference package.</p>
+  </header>
+  <nav id="nav" aria-label="Brand navigation"></nav>
+  <main>
+    <div class="intro">Each system uses the approved logo artwork, Manrope in production, and application-specific visual language. Every packaged PNG can be downloaded from its system below. The generated images are reference raster assets; they are not editable vectors, font files, trademark clearances, or evidence for claims beyond the underlying software.</div>
+    <div id="brands"></div>
+  </main>
+  <footer>Production handoff: use the packaged PNGs as approved visual references; load licensed Manrope separately; preserve the approved mark geometry; and obtain a separately authorized vector-production workflow if editable vector marks are required.</footer>
+  <script>
+    const brands = [
+      { id:'boilinglab', name:'BoilingLab', role:'Experiment-to-analysis toolkit for pool-boiling research.', logic:'A controlled phase-transition field and sensing trace represent the handoff from physical observation to derived analysis.', colors:['Cobalt','Thermal amber','Graphite'], application:'Multimodal experiment workspace', boundary:'Derived outputs remain analysis products; they are not automatically independent ground truth.' },
+      { id:'bubbleid-flow', name:'BubbleID-Flow', role:'Flow-boiling image segmentation workspace.', logic:'A tapered split-flow glyph carries identified visual regions through a constrained channel without relying on literal bubble imagery.', colors:['Deep indigo','Cyan','Teal','Graphite'], application:'Segmentation and projected-vapor-area workspace', boundary:'Image-derived masks and projected vapor area are camera-view products, not calibrated three-dimensional void fraction.' },
+      { id:'opendc-lca', name:'OpenDC-LCA', role:'Physics-informed life-cycle screening for data-center cooling.', logic:'The central accounting boundary, cooling loop, and checkpoint make system boundaries and evidence status visible.', colors:['Deep teal','Mineral blue','Copper','Graphite'], application:'Screening results and evidence-status interface', boundary:'Screening results are not ISO conformity assessment, measured facility impact accounting, or a public comparison without sufficient evidence.' },
+      { id:'retailflex-open', name:'RetailFlex-Open', role:'Open workflows for retail-building energy-flexibility screening.', logic:'Offset building forms and an amber demand-shift contour communicate scenario tradeoffs without implying realized operations.', colors:['Electric blue','Amber','Slate','Graphite'], application:'Illustrative flexibility decision studio', boundary:'The system communicates simulated screening scenarios, not store-specific savings, resilience, refrigeration-safety, or operational recommendations.' },
+      { id:'aelab', name:'AELab', role:'Acoustic-emission sensing research toolkit.', logic:'Measured pulse elements resolve toward a calibrated target, representing source-aware event analysis rather than generic audio.', colors:['Violet','Cyan','Graphite'], application:'Acoustic-event analysis workspace', boundary:'Event indicators and features require appropriate calibration and interpretation; the identity makes no diagnostic-certainty claim.' },
+      { id:'flowlab', name:'FlowLab', role:'Single- and two-phase liquid-cooling experimental workflow toolkit.', logic:'Thermal-hydraulic streams cross and align into a stable flow state, reflecting synchronized multimodal acquisition.', colors:['Teal','Cobalt','Graphite'], application:'Synchronized flow-loop workflow', boundary:'The application visual is a workflow concept, not a safe-operating instruction or a substitute for laboratory SOPs.' },
+      { id:'thermal-ai-commons', name:'Thermal AI Commons', role:'Seed infrastructure for interoperable, trustworthy thermal-AI research.', logic:'Separate evidence layers pass through a visible interface while remaining distinct, expressing contracts and evaluation without ownership transfer.', colors:['Indigo','Emerald','Cool gray','Amber','Graphite'], application:'Component compatibility and evidence-interface view', boundary:'This is seed infrastructure; it does not imply a universal validated model, field-ready diagnostic, or public benchmark dataset.' },
+      { id:'data-center-cooling-research-tools', name:'Data Center Cooling Research Tools', role:'Curated discovery hub for data-center cooling research tools.', logic:'Three compute slabs are crossed by one continuous cooling path, expressing the connection between data-center infrastructure and thermal management without implying a single solver or validated resource.', colors:['Graphite','Cooling cyan','Deep navy','White'], application:null, boundary:'Catalog entries are curation aids, not validation stamps. Review each source, stated evidence basis, and artifact status before treating a resource as engineering evidence.' },
+      { id:'data-center-atlas', name:'Data Center Atlas', role:'Interactive atlas for data-center water and energy exposure.', logic:'PCB-like terrain layers and a central blue flow path connect geographic water context, energy conditions, and AI data-center infrastructure.', colors:['PCB emerald','Ultramarine','Graphite'], application:'Atlas portal and decision-support interface', boundary:'The atlas is a research decision-support resource. It does not represent measured facility operations or provide site-specific operational recommendations.', assets:[
+        { label:'Primary logo — light', file:'data-center-atlas-primary-light.png' },
+        { label:'Primary logo — dark', file:'data-center-atlas-primary-dark.png' },
+        { label:'Icon — color', file:'data-center-atlas-icon-color.png' },
+        { label:'Icon — monochrome', file:'data-center-atlas-icon-monochrome.png' },
+        { label:'Logo system board', file:'data-center-atlas-logo-system-board.png' },
+        { label:'App-icon proof', file:'data-center-atlas-app-icon-proof.png' }
+      ] }
+    ];
+    const nav = document.querySelector('#nav');
+    const root = document.querySelector('#brands');
+    const esc = value => value.replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+    const defaultAssets = brand => [
+      { label:'Primary logo', file:'primary-light.png' },
+      { label:'Icon PNG', file:'icon-color.png' },
+      { label:'Logo system board', file:'logo-system-board.png' },
+      ...(brand.application ? [{ label:'Application visual', file:'application.png' }] : [])
+    ];
+    for (const brand of brands) {
+      const assets = brand.assets ?? defaultAssets(brand);
+      const primary = assets[0];
+      const assetPath = asset => `assets/${brand.id}/${asset.file}`;
+      nav.insertAdjacentHTML('beforeend', `<a href="#${brand.id}">${esc(brand.name)}</a>`);
+      root.insertAdjacentHTML('beforeend', `
+        <section id="${brand.id}">
+          <div class="brand-head">
+            <div><div class="eyebrow">Core VI · approved raster system</div><h2>${esc(brand.name)}</h2><p>${esc(brand.role)}</p><div>${brand.colors.map(color => `<span class="pill">${esc(color)}</span>`).join('')}</div></div>
+            <img src="${assetPath(primary)}" alt="${esc(brand.name)} approved primary logo">
+          </div>
+          <div class="content">
+            <div class="asset-gallery">
+              ${assets.map(asset => `<figure class="asset-card"><img src="${assetPath(asset)}" alt="${esc(brand.name)} ${esc(asset.label)}"><figcaption><span>${esc(asset.label)}</span><a class="download" href="${assetPath(asset)}" download>Download PNG</a></figcaption></figure>`).join('')}
+            </div>
+            <div class="rules">
+              <div class="rule"><h3>Form logic</h3><p>${esc(brand.logic)}</p></div>
+              <div class="rule"><h3>Application</h3><p>${esc(brand.application ?? 'No application visual is included')}. Use the icon-only version for GitHub avatars and the primary lockup for document or interface headers.</p></div>
+              <div class="rule"><h3>Typography</h3><p>Use Manrope for production interface, documentation, and presentation text. Do not treat the raster lettering as an installed font.</p></div>
+              <div class="rule"><h3>Usage</h3><p>Preserve mark geometry, clear space, contrast, and color relationships. Do not redraw, stretch, recolor, outline, or add effects to the approved raster mark.</p></div>
+            </div>
+            <div class="note"><strong>Claim boundary.</strong> ${esc(brand.boundary)}</div>
+          </div>
+        </section>`);
+    }
+  </script>
+</body>
+</html>
