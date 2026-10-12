@@ -2,6 +2,9 @@
 
 Public raster reference package for the NED3 research-software visual identity systems.
 
+Repository scope, evidence, and reuse boundaries are also available in the
+[NED3 resource manifest](.ned3/resource-manifest-v0.1.json).
+
 The site is published with GitHub Pages from this repository and presents the
 approved packaged PNGs for each system. Every displayed asset has its own
 download link, including the primary lockup, icon PNG, logo-system board, and
